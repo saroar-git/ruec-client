@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.banners::-webkit-scrollbar {
+  display: none;
+}
+
+.nav .active{
+  @apply bg-inherit text-[#136734] border-b-2 border-[#136734];
+}

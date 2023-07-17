@@ -18,6 +18,8 @@ import Events from './pages/Events/Events';
 import Community from './pages/Community/Community';
 import Features from './pages/Features/Features';
 import AuthProvider from './context/AuthProvider';
+import Profile from './pages/Profile/Profile';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,7 @@ const router = createBrowserRouter([
       { path: '/about', element: <About /> },
       
       { path: '/login', element: <Login /> },
+      { path: '/profile', element: <PrivateRoute><Profile /></PrivateRoute> }
     ]
   },
 ]);
@@ -42,7 +45,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <HelmetProvider>
-        <Toaster />
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+        />
         <RouterProvider router={router} />
       </HelmetProvider>
     </AuthProvider>

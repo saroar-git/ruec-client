@@ -19,7 +19,7 @@ const Blogs = () => {
         <>
           <Helmet><title>Blogs | RUEC</title></Helmet>
           <Container>
-            <div className="pt-28">
+              <div className="pt-28 pb-16">
 
             </div>
           </Container>

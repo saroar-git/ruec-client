@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ScaleLoader } from 'react-spinners';
 import Container from "../../components/Container";
 
-const Features = () => {
+const Profile = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
@@ -17,9 +17,9 @@ const Features = () => {
         </div>
       ) : (
         <>
-          <Helmet><title>Features | RUEC</title></Helmet>
+          <Helmet><title>Profile | RUEC</title></Helmet>
           <Container>
-              <div className="pt-28 pb-16">
+            <div className="pt-28 pb-16">
 
             </div>
           </Container>
@@ -29,4 +29,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default Profile;

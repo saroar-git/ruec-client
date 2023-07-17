@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from '/logo.png'
+import { BiCurrentLocation, BiLogoFacebookCircle, BiLogoGmail, BiLogoWhatsapp, BiLogoYoutube, BiMobile } from "react-icons/bi";
 
 const Footer = () => {
   return (
@@ -8,34 +9,88 @@ const Footer = () => {
         <div>
           <img src={logo} alt="" width={70} />
           <p className='font-bold'>Rajshahi University Education Club</p>
-          <span>Providing reliable tech since 2019</span>
+          <span>Since 2019.</span>
         </div>
 
         <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <h2 className="footer-title">Contact</h2>
+
+          <div className='flex items-start  gap-2'>
+            <BiCurrentLocation className='text-xl' />
+            <Link to='https://www.google.com/maps/dir/?api=1&destination=24.368570316306%2C88.639755&fbclid=IwAR2HpvS3kz4g0R72sl9RyE5x9ZAbFNcXNUx8cB6MXdsl7UV9kUS2fUIxlrE' target='_blank' className='hover:link'>
+              Room No - 205, 2nd Floor, <br /> RUCSU building, Rajshahi University, <br /> Rajshahi, Bangladesh.
+            </Link>
+          </div>
+
+          <div className='flex items-center  gap-2'>
+            <BiLogoGmail className='text-lg' />
+            <Link to="mailto:rueducationclub@gmail.com" target="_blank" className='hover:link'>
+              rueducationclub@gmail.com
+            </Link>
+          </div>
+
+          {/* <div className='flex items-center  gap-2'>
+            <BiMobile className='text-xl' />
+            <Link to="mailto:rueducationclub@gmail.com" target="_blank" className='hover:link'>
+              01600-248401
+            </Link>
+          </div> */}
         </div>
 
         <div>
-          <span className="footer-title">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <h2 className="footer-title">Social Links</h2>
+
+          <div className='flex items-start  gap-2'>
+            <BiLogoFacebookCircle className='text-xl' />
+            <Link to='https://www.facebook.com/rueduclub' target='_blank' className='hover:link'>
+              Facebook Page
+            </Link>
+          </div>
+
+          <div className='flex items-start  gap-2'>
+            <BiLogoWhatsapp className='text-lg' />
+            <Link to="https://wa.me/01600248401" target="_blank" className='hover:link'>
+              WhatsApp
+            </Link>
+          </div>
+
+          <div className='flex items-start  gap-2'>
+            <BiLogoYoutube className='text-xl' />
+            <Link to="https://www.youtube.com/@rajshahiuniversityeducatio3505" target="_blank" className='hover:link'>
+              Youtube Channel
+            </Link>
+          </div>
         </div>
 
         <div>
-          <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <div className="footer-title">Community</div>
+          <Link to="" target="_blank" className='hover:link'>
+          ●  Advisories
+          </Link>
+          <Link to="" target="_blank" className='hover:link'>
+          ●  Executive Committee
+          </Link>
+          <Link to="" target="_blank" className='hover:link'>
+          ●  Club Members
+          </Link>
+        </div>
+
+        <div>
+          <div className="footer-title">Collaboration</div>
+          <Link to="" target="_blank" className='hover:link'>
+          ●  American Corner
+          </Link>
+          <Link to="" target="_blank" className='hover:link'>
+          ●  Education USA
+          </Link>
+          <Link to="" target="_blank" className='hover:link'>
+          ●  Erasmus Mundus 
+          </Link>
         </div>
       </footer>
 
       <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+
         <div>
           <p>© 2023 - RUEC |  All right reserved.</p>
           <small>Developed by <Link className='link font-bold' to="https://www.linkedin.com/in/saroar-in/" target='_blank'>Saroar Jahan</Link></small>

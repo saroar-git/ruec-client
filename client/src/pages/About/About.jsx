@@ -20,7 +20,7 @@ const About = () => {
         <>
           <Helmet><title>About | RUEC</title></Helmet>
           <Container>
-            <div className="pt-28">
+            <div className="pt-28 pb-16">
               <h1 className="text-2xl md:text-5xl font-extrabold text-center text-[#136734] mb-5" data-aos="zoom-in" data-aos-easing="ease-out-cubic"
                 data-aos-duration="1000">
                 Welcome to the Rajshahi University Education Club!

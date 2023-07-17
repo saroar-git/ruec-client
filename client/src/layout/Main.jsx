@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
 import Footer from "../pages/Shared/Footer/Footer";
 import { animateScroll as scroll } from 'react-scroll';
+import { BsRocketFill } from "react-icons/bs";
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
@@ -26,17 +27,18 @@ const Main = () => {
           <ScaleLoader color="#136734" size={150} />
         </div>
       ) : (
-        <div className="min-h-screen overflow-hidden font-nunito">
+        <div className="min-h-screen overflow-hidden font-nunito relative">
           <Navbar />
           <ScrollRestoration />
           <div className="min-h-[calc(100vh-250px)]">
             <Container>
-              <Outlet />
+                <Outlet />
               </Container>
-              <button onClick={handleSmoothScroll} className="scroll-to-top-button text-right w-full">
+              <Footer />
+              <button onClick={handleSmoothScroll} className="absolute bottom-4 right-4 font-bold flex flex-col items-center">
+                <BsRocketFill className="animate-bounce"/>
                 Jump to Top
               </button>
-            <Footer />
           </div>          
         </div>
       )}

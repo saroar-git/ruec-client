@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import { useState, useEffect, useRef } from 'react';
 import { RxDotFilled } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 
@@ -61,12 +60,12 @@ const Banner = () => {
                   >
                         <div className="absolute rounded flex justify-center md:justify-start p-4 w-full h-full left-0 top-0 inset-0 bg-gradient-to-r from-black via-black to-transparent opacity-90 text-start">
 
-                              <div className='text-white space-y-8 md:space-y-9 py-12 md:px-12 md:py-20 md:w-[70%]'>
+                              <div className='text-white space-y-8 md:space-y-9 py-12 md:px-12 md:py-24 md:w-[70%]'>
                                     <h2 className='md:text-5xl text-2xl font-bold'>Rajshahi University Education Club (RUEC)</h2>
 
                                     <p className="text-sm md:text-lg md:w-11/12 text-gray-300">The Rajshahi University Education Club is the pioneering education club in Bangladesh, dedicated to advancing education, fostering innovation, and promoting research. Our mission is to empower students and contribute to the development of a knowledgeable and progressive society. Join us on this transformable journey of learning and exploration.</p>
 
-                                    <div className="text-center md:text-start">
+                                    <div className="text-start">
                                     <Link to='/about' className="relative inline-flex items-center justify-start py-2 md:py-3 pl-4 pr-12 overflow-hidden font-semibold text-black transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
                                                 <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-[#136734] group-hover:h-full"></span>
                                                 <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">

@@ -48,16 +48,16 @@ const Footer = () => {
           </div>
 
           <div className='flex items-start  gap-2'>
-            <BiLogoWhatsapp className='text-lg' />
-            <Link to="https://wa.me/01600248401" target="_blank" className='hover:link'>
-              WhatsApp
+            <BiLogoYoutube className='text-xl' />
+            <Link to="https://www.youtube.com/@rajshahiuniversityeducatio3505" target="_blank" className='hover:link'>
+              Youtube Channel
             </Link>
           </div>
 
           <div className='flex items-start  gap-2'>
-            <BiLogoYoutube className='text-xl' />
-            <Link to="https://www.youtube.com/@rajshahiuniversityeducatio3505" target="_blank" className='hover:link'>
-              Youtube Channel
+            <BiLogoWhatsapp className='text-lg' />
+            <Link to="https://wa.me/01600248401" target="_blank" className='hover:link'>
+              WhatsApp Now
             </Link>
           </div>
         </div>

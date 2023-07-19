@@ -20,6 +20,10 @@ import Features from './pages/Features/Features';
 import AuthProvider from './context/AuthProvider';
 import Profile from './pages/Profile/Profile';
 import PrivateRoute from './routes/PrivateRoute';
+import Admin from './layout/Admin';
+import Dashboard from './pages/Admin/Dashboard/Dashboard';
+import President from './pages/Home/Statements/President';
+import Secretary from './pages/Home/Statements/Secretary';
 
 const router = createBrowserRouter([
   {
@@ -34,11 +38,21 @@ const router = createBrowserRouter([
       { path: '/community', element: <Community /> },
       { path: '/features', element: <Features /> },
       { path: '/about', element: <About /> },
+      { path: '/president', element: <President /> },
+      { path: '/secretary', element: <Secretary /> },
       
       { path: '/login', element: <Login /> },
       { path: '/profile', element: <PrivateRoute><Profile /></PrivateRoute> }
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><Admin /></PrivateRoute>,
+    errorElement: <Error />,
+    children: [
+      { path: '/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute> }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

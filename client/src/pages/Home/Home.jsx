@@ -6,6 +6,7 @@ import UpEvent from "./UpEvent";
 import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
 import Feature from "./Feature";
+import Statements from "./Statements/Statements";
 
 
 const Home = () => {
@@ -28,7 +29,8 @@ return (
           <Banner />
           <Container>
             <Moto />
-            <UpEvent />
+              <UpEvent />
+              <Statements />
             </Container>
             <Feature />
         </div>

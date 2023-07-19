@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GoogleForm = () => {
+const AddEvents = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const GoogleForm = () => {
   );
 };
 
-export default GoogleForm;
+export default AddEvents;

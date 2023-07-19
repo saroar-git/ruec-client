@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { ScaleLoader } from 'react-spinners';
 import Container from '../../components/Container';
 import { GrClose } from "react-icons/gr";
-import './Gallery.css';
 
 import img1 from '../../assets/images/img0.jpg';
 import img13 from '../../assets/images/img1.jpg';

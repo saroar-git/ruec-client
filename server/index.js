@@ -5,8 +5,13 @@ const port = process.env.PORT || 5000;
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-// Middleware
-app.use(cors());
+// middleware
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 //MongoDB
@@ -36,9 +41,9 @@ async function run() {
 
     //get users info
     app.get('/users', async (req, res) => {
-      
-    })
-
+      const result = await usersCollection.find().toArray();
+      res.send(result);
+    });
 
 
     // Send a ping to confirm a successful connection

@@ -24,6 +24,8 @@ import Admin from './layout/Admin';
 import Dashboard from './pages/Admin/Dashboard/Dashboard';
 import President from './pages/Home/Statements/President';
 import Secretary from './pages/Home/Statements/Secretary';
+import Advisories from './pages/Community/Advisories';
+import Committee from './pages/Community/Committee';
 
 const router = createBrowserRouter([
   {
@@ -31,14 +33,11 @@ const router = createBrowserRouter([
     element: <Main />,
     errorElement: <Error/>,
     children: [
-      { path: '/', element: <Home /> },
-      { path: '/blogs', element: <Blogs /> },
-      { path: '/gallery', element: <Gallery /> },
-      { path: '/events', element: <Events /> },
-      { path: '/community', element: <Community /> },
-      { path: '/features', element: <Features /> },
-      { path: '/about', element: <About /> },
-      { path: '/president', element: <President /> },
+      { path: '/', element: <Home /> }, { path: '/blogs', element: <Blogs /> },
+      { path: '/gallery', element: <Gallery /> }, { path: '/events', element: <Events /> },
+      { path: '/community', element: <Community /> }, { path: '/advisories', element: <Advisories /> },
+      { path: '/executive-committee', element: <Committee /> }, { path: '/features', element: <Features /> },
+      { path: '/about', element: <About /> }, { path: '/president', element: <President /> },
       { path: '/secretary', element: <Secretary /> },
       
       { path: '/login', element: <Login /> },

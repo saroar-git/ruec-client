@@ -10,7 +10,6 @@ import Container from "../../components/Container";
 import Register from "./Register";
 
 const Login = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { login } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,16 +30,11 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
-        setIsSubmitting(true);
         toast.success('Login Successful!');
         form.reset();
         navigate(from, { replace: true });
       })
       .catch(error => toast.error(error.message));
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-    }, 2000);
   };
 
   return (
@@ -51,7 +45,7 @@ const Login = () => {
         </div>
       ) : (
           <Container>
-            <div className="flex flex-col gap-10 md:flex-row items-center justify-between space-y-20 pt-36 md:pt-20 pb-24">
+            <div className="flex flex-col gap-10 md:flex-row items-center justify-between space-y-16 pt-16 md:pt-0 pb-12 md:pb-24">
               <Helmet><title>Login | RUEC</title></Helmet>
 
               {/* Login form */}
@@ -99,21 +93,19 @@ const Login = () => {
                             </label>
                           </div>
 
-                          {isSubmitting ? (
-                            <span className="animate-spin">Processing...</span>
-                          ) : (
-                              <div className="relative">
-                                <button
-                                  type="submit"
-                                  className="relative px-3 py-1 font-medium text-white group">
-                                  <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-[#59BB4D]   group-hover:bg-[#136734] group-hover:skew-x-12"></span>
-                                  <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#136734] group-hover:bg-[#59BB4D]   group-hover:-skew-x-12"></span>
-                                  <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-green-600 -rotate-12"></span>
-                                  <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-green-400 -rotate-12"></span>
-                                  <span className="relative">Submit</span>
-                                </button>
-                              </div>
-                          )}
+
+                          <div className="relative">
+                            <button
+                              type="submit"
+                              className="relative px-3 py-1 font-medium text-white group">
+                              <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-[#59BB4D]   group-hover:bg-[#136734] group-hover:skew-x-12"></span>
+                              <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#136734] group-hover:bg-[#59BB4D]   group-hover:-skew-x-12"></span>
+                              <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-green-600 -rotate-12"></span>
+                              <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-green-400 -rotate-12"></span>
+                              <span className="relative">Submit</span>
+                            </button>
+                          </div>
+
                           <p className="pt-3 md:flex items-center gap-1">
                             Not a member?
                             <span className="text-red-600 text-base animate-pulse  hover:text-[#136734] font-semibold cursor-pointer flex items-center gap-1"> Apply now

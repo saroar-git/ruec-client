@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
 import Feature from "./Feature";
 import Statements from "./Statements/Statements";
+import Collaboration from "./Collaboration";
 
 
 const Home = () => {
@@ -32,6 +33,7 @@ return (
               <UpEvent />
               <Statements />
             </Container>
+            <Collaboration />
             <Feature />
         </div>
       </>

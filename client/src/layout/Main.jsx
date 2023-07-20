@@ -28,8 +28,8 @@ const Main = () => {
         </div>
       ) : (
         <div className="min-h-screen overflow-hidden font-nunito relative">
-          <Navbar />
           <ScrollRestoration />
+          <Navbar />
           <div className="min-h-[calc(100vh-250px)]">
             <Container>
                 <Outlet />

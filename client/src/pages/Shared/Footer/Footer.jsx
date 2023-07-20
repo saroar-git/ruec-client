@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import logo from '/logo.png'
-import { BiCurrentLocation, BiLogoFacebookCircle, BiLogoGmail, BiLogoWhatsapp, BiLogoYoutube, BiMobile } from "react-icons/bi";
+import { BiLogoFacebookCircle, BiLogoGmail, BiLogoLinkedin, BiLogoYoutube, BiMobile } from "react-icons/bi";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -16,7 +18,7 @@ const Footer = () => {
           <h2 className="footer-title">Contact</h2>
 
           <div className='flex items-start  gap-2'>
-            <BiCurrentLocation className='text-xl' />
+            <FaLocationDot className='text-lg' />
             <Link to='https://www.google.com/maps/dir/?api=1&destination=24.368570316306%2C88.639755&fbclid=IwAR2HpvS3kz4g0R72sl9RyE5x9ZAbFNcXNUx8cB6MXdsl7UV9kUS2fUIxlrE' target='_blank' className='hover:link'>
               Room No - 205, 2nd Floor, <br /> RUCSU building, Rajshahi University, <br /> Rajshahi, Bangladesh.
             </Link>
@@ -29,12 +31,12 @@ const Footer = () => {
             </Link>
           </div>
 
-          {/* <div className='flex items-center  gap-2'>
+          <div className='flex items-center  gap-2'>
             <BiMobile className='text-xl' />
             <Link to="mailto:rueducationclub@gmail.com" target="_blank" className='hover:link'>
               01600-248401
             </Link>
-          </div> */}
+          </div>
         </div>
 
         <div>
@@ -48,16 +50,23 @@ const Footer = () => {
           </div>
 
           <div className='flex items-start  gap-2'>
-            <BiLogoYoutube className='text-xl' />
-            <Link to="https://www.youtube.com/@rajshahiuniversityeducatio3505" target="_blank" className='hover:link'>
-              Youtube Channel
+            <BiLogoLinkedin className='text-xl' />
+            <Link to='https://www.linkedin.com/company/rajshahi-university-education-club-ruec/' target='_blank' className='hover:link'>
+              LinkedIn Page
             </Link>
           </div>
 
           <div className='flex items-start  gap-2'>
-            <BiLogoWhatsapp className='text-lg' />
+            <IoLogoWhatsapp className='text-lg' />
             <Link to="https://wa.me/01600248401" target="_blank" className='hover:link'>
               WhatsApp Now
+            </Link>
+          </div>
+
+          <div className='flex items-start  gap-2'>
+            <BiLogoYoutube className='text-xl' />
+            <Link to="https://www.youtube.com/@rajshahiuniversityeducatio3505" target="_blank" className='hover:link'>
+              Youtube Channel
             </Link>
           </div>
         </div>
@@ -72,19 +81,6 @@ const Footer = () => {
           </Link>
           <Link to="" target="_blank" className='hover:link'>
           ●  Club Members
-          </Link>
-        </div>
-
-        <div>
-          <div className="footer-title">Collaboration</div>
-          <Link to="" target="_blank" className='hover:link'>
-          ●  American Corner
-          </Link>
-          <Link to="" target="_blank" className='hover:link'>
-          ●  Education USA
-          </Link>
-          <Link to="" target="_blank" className='hover:link'>
-          ●  Erasmus Mundus 
           </Link>
         </div>
       </footer>

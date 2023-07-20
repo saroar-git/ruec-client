@@ -74,7 +74,7 @@ const Gallery = () => {
         <>
           <Helmet><title>Gallery | RUEC</title></Helmet>
           <Container>
-            <div className="pt-28 pb-16">
+            <div className="py-16">
                 <div className={model ? "model open" : "model"}>
                   <img src={tempImg} alt="" />
                   <div className="close-icon" onClick={() => setModel(false)}>

@@ -25,7 +25,7 @@ const President = () => {
             <div className='flex flex-col items-center mt-2 space-y-2'>
               <img src={first} alt="" className='h-52 w-52 shadow-sm rounded' />
               <h1 className='text-xl md:text-2xl font-bold'>Fuad Pablo</h1>
-              <p className='font-semibold'>President and Founder</p>
+                <p className='font-semibold'>Founder and President </p>
               <small className='font-semibold'>Rajshahi University Education Club</small>
               <div className='flex items-center gap-4 pt-5 md:absolute md:-bottom-14'>
                 <a href="https://web.facebook.com/fuadpablu" target='_blank' rel='noopener noreferrer'>
@@ -40,7 +40,7 @@ const President = () => {
                   </IconButton>
                 </a>
 
-                <a href='https://www.linkedin.com/in/saroar-in/' target='_blank' rel='noopener noreferrer'>
+                  <a href='https://www.linkedin.com/in/fuad-pablo-003a081a6/' target='_blank' rel='noopener noreferrer'>
                   <IconButton text="LinkedIn" color='bg-[#0A66C2]'>
                     <FaLinkedin size={25} />
                   </IconButton>

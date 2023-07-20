@@ -22,51 +22,50 @@ const Feature = () => {
       </div>
       <div className='mb-24 mt-14' >
         <Marquee gradient>
-          <div className='md:mx-14 my-0 py-0'>
+          <div className='mx-10'>
             <img src={one} alt="" width={230}/>
           </div>
 
-          <div className='my-0 py-0'>
+          <div>
             <img src={zero} alt="" width={230}/>
           </div>
 
-          <div className='my-0 py-0'>
+          <div className='mx-10'>
             <img src={two} alt="" width={230} />
           </div>
 
-          <div className='md:mx-14 my-0 py-0'>
+          <div>
             <img src={three} alt="" width={220} />
           </div>
 
-          <div className='my-0 py-0'>
+          <div className='mx-10'>
             <img src={four} alt="" width={230} />
           </div>
 
-          <div className='md:mx-14 my-0 py-0'>
+          <div>
             <img src={five} alt="" width={230} />
           </div>
 
-          <div className='my-0 py-0'>
+          <div className='mx-10'>
             <img src={six} alt="" width={230} />
           </div>
 
-          <div className='md:mx-14 my-0 py-0'>
+          <div>
             <img src={seven} alt="" width={230} />
           </div>
 
-          <div className='my-0 py-0'>
+          <div className='mx-10'>
             <img src={eight} alt="" width={180} />
           </div>
 
-          <div className='md:mx-14 my-0 py-0'>
+          <div>
             <img src={nine} alt="" width={180} />
           </div>
           
-          <div className='md:mr-14 my-0 py-0'>
+          <div className='ml-10'>
             <img src={ten} alt="" width={230} />
           </div>
         </Marquee>
-
       </div>
     </>
   );

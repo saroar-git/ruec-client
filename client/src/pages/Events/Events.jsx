@@ -19,7 +19,7 @@ const Events = () => {
         <>
           <Helmet><title>Events | RUEC</title></Helmet>
           <Container>
-              <div className="pt-28 pb-16">
+              <div className="py-16">
 
             </div>
           </Container>

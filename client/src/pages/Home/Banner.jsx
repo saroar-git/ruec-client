@@ -51,7 +51,7 @@ const Banner = () => {
 
       return (
             <div
-                  className="h-[500px] md:h-[580px] w-full mx-auto relative my-24"
+                  className="h-[500px] md:h-[580px] w-full mx-auto relative mt-8 mb-24"
                   data-aos="zoom-out" data-aos-easing="ease-out-cubic"
                   data-aos-duration="1000">
                   <div

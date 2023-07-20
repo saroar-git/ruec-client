@@ -1,10 +1,8 @@
-import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import logo from '/logo.png';
 
 const Register = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { createUser, updateUserProfile, logout } = useAuth();
 
   const handleRegister = (e) => {
@@ -25,7 +23,7 @@ const Register = () => {
 
         updateUserProfile(name, photo)
           .then(() => {
-            const saveUser = { name: name, email: email, phone: phone, department: department, session: session, role: 'pending' };
+            const saveUser = { name: name, email: email, phone: phone, department: department, session: session, role: 'pending', status: 'pending' };
 
             fetch('http://localhost:5000/users', {
               method: 'POST',
@@ -35,7 +33,6 @@ const Register = () => {
               .then(res => res.json())
               .then(data => {
                 if (data.insertedId) {
-                  setIsSubmitting(true);
                   toast.success('Membership is Pending!');
                   form.reset();
                   logout();
@@ -48,10 +45,6 @@ const Register = () => {
           .catch(error => toast.error(error.message));
       })
       .catch(error => toast.error(error.message));
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-    }, 2000);
   };
 
   return (
@@ -169,11 +162,7 @@ const Register = () => {
                     <input type="file" name="photo" className="file-input border-[#04431d] file-input-xs max-w-xs" />
                   </div>
 
-                  {isSubmitting ? (
-                    <span className="animate-spin">Processing...</span>
-                  ) : (
-                    <input type="submit" value="Submit" className="px-3 py-1 text-white cursor-pointer bg-[#207f46] hover:bg-[#04431d] hover:scale-95 duration-300 hover:duration-300  rounded" />
-                  )}
+                  <input type="submit" value="Submit" className="px-3 py-1 text-white cursor-pointer bg-[#207f46] hover:bg-[#04431d] hover:scale-95 duration-300 hover:duration-300  rounded" />
                 </div>
               </form>
             </div>

@@ -5,6 +5,8 @@ import { BiMenu,  BiXCircle } from "react-icons/bi";
 import logo from '/logo1.png';
 import useAuth from '../../../hooks/useAuth';
 import Button from '../../../components/Button';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -37,7 +39,7 @@ const Navbar = () => {
         <div className='md:flex items-center justify-between bg-white py-1 md:px-10 px-6'>
           <div className='font-bold text-2xl cursor-pointer flex items-center py-2'>
             <Link to='/' >
-              <img src={logo} width={200} alt="" />
+              <LazyLoadImage effect="blur" loading='lazy' src={logo} width={200} alt="" />
             </Link>
           </div>
 

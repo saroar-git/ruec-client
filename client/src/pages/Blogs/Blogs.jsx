@@ -19,7 +19,11 @@ const Blogs = () => {
         <>
           <Helmet><title>Blogs | RUEC</title></Helmet>
           <Container>
-              <div className="py-16">
+              <div className="py-16 md:h-[46.5vh]">
+
+                <div className='flex items-center justify-center text-3xl font-bold'>
+                  <h2>Blogs are coming soon..</h2>
+                </div>
 
             </div>
           </Container>

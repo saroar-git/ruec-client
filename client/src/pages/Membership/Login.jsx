@@ -8,16 +8,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { BiSolidDownArrowCircle, BiSolidRightArrowCircle } from "react-icons/bi";
 import Container from "../../components/Container";
 import Register from "./Register";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/"
 
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => setIsLoading(false), 500);
   }, []);
 
   const handleSubmit = (e) => {
@@ -29,8 +30,7 @@ const Login = () => {
     login(email, password)
       .then(result => {
         const user = result.user;
-        console.log(user);
-        toast.success('Login Successful!');
+        toast.success(`Welcome, ${user.displayName}`);
         form.reset();
         navigate(from, { replace: true });
       })
@@ -39,19 +39,19 @@ const Login = () => {
 
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         <div className="flex items-center justify-center h-screen">
           <ScaleLoader color="#136734" size={150} />
         </div>
       ) : (
           <Container>
-            <div className="flex flex-col gap-10 md:flex-row items-center justify-between space-y-16 pt-16 md:pt-0 pb-12 md:pb-24">
+            <div className="flex flex-col gap-10 lg:flex-row items-center justify-between space-y-16 pt-16 md:pt-0 pb-12 md:pb-24">
               <Helmet><title>Login | RUEC</title></Helmet>
 
               {/* Login form */}
               <>
-                <div className="relative py-6 sm:max-w-xl sm:mx-auto group md:mt-24">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#59BB4D] to-[#136734]  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 group-hover:rotate-2 hover:duration-500 duration-500 sm:rounded-3xl"> </div>
+                <div className="relative py-6 sm:max-w-xl sm:mx-auto md:mt-24">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#59BB4D] to-[#136734]  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"> </div>
                   <div className="relative border-[1px] border-[#136734] bg-white shadow-lg sm:rounded-3xl px-20 py-8">
                     <div className="max-w-md w-full mx-auto" data-aos="fade-right" data-aos-easing="ease-out-cubic"
                       data-aos-duration="1000">
@@ -94,15 +94,21 @@ const Login = () => {
                           </div>
 
 
-                          <div className="relative">
+                          <div className="relative group">
                             <button
                               type="submit"
-                              className="relative px-3 py-1 font-medium text-white group">
-                              <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-[#59BB4D]   group-hover:bg-[#136734] group-hover:skew-x-12"></span>
-                              <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#136734] group-hover:bg-[#59BB4D]   group-hover:-skew-x-12"></span>
+                              className="relative px-3 py-1 font-medium text-white w-1/2">
+                              <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-[#59BB4D] group-hover:bg-[#136734] group-hover:skew-x-12"></span>
+                              <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#136734] group-hover:bg-[#59BB4D] group-hover:-skew-x-12"></span>
                               <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 bg-green-600 -rotate-12"></span>
                               <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-green-400 -rotate-12"></span>
-                              <span className="relative">Submit</span>
+                              <span className="relative">
+                                {loading ? (
+                                  <TbFidgetSpinner className='m-auto animate-spin' size={24} />
+                                ) : (
+                                  'Continue'
+                                )}
+                              </span>
                             </button>
                           </div>
 

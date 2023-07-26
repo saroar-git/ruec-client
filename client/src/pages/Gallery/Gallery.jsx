@@ -3,28 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { ScaleLoader } from 'react-spinners';
 import Container from '../../components/Container';
 import { GrClose } from "react-icons/gr";
-
-import img1 from '../../assets/images/img0.jpg';
-import img13 from '../../assets/images/img1.jpg';
-import img2 from '../../assets/images/img2.jpg';
-import img19 from '../../assets/images/img3.jpg';
-import img3 from '../../assets/images/img4.jpg';
-import img18 from '../../assets/images/img5.jpg';
-import img4 from '../../assets/images/img6.jpg';
-import img17 from '../../assets/images/img7.jpg';
-import img5 from '../../assets/images/img8.jpg';
-import img16 from '../../assets/images/img9.jpg';
-import img21 from '../../assets/images/img10.jpg';
-import img15 from '../../assets/images/img11.jpg';
-import img7 from '../../assets/images/img12.jpg';
-import img14 from '../../assets/images/img13.jpg';
-import img8 from '../../assets/images/img14.jpg';
-import img6 from '../../assets/images/img15.jpg';
-import img9 from '../../assets/images/img16.jpg';
-import img12 from '../../assets/images/img17.jpg';
-import img10 from '../../assets/images/img18.jpg';
-import img11 from '../../assets/images/img19.jpg';
-import img20 from '../../assets/images/img20.jpg';
+import logo from '/logo.png';
+import { useQuery } from '@tanstack/react-query';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Gallery = () => {
   const [loading, setLoading] = useState(true);
@@ -32,35 +14,16 @@ const Gallery = () => {
     setTimeout(() => setLoading(false), 500);
   }, []);
 
-  let data = [
-    { id: 1, imgSrc: img1 },
-    { id: 2, imgSrc: img2 },
-    { id: 3, imgSrc: img3 },
-    { id: 4, imgSrc: img4 },
-    { id: 5, imgSrc: img5 },
-    { id: 6, imgSrc: img6 },
-    { id: 7, imgSrc: img7 },
-    { id: 8, imgSrc: img8 },
-    { id: 9, imgSrc: img9 },
-    { id: 10, imgSrc: img10 },
-    { id: 11, imgSrc: img11 },
-    { id: 12, imgSrc: img12 },
-    { id: 13, imgSrc: img13 },
-    { id: 14, imgSrc: img14 },
-    { id: 15, imgSrc: img15 },
-    { id: 16, imgSrc: img16 },
-    { id: 17, imgSrc: img17 },
-    { id: 18, imgSrc: img18 },
-    { id: 19, imgSrc: img19 },
-    { id: 20, imgSrc: img20 },
-    { id: 21, imgSrc: img21 },
-  ];
+  const { data: data = [] } = useQuery(['Images'], async () => {
+    const res = await fetch('http://localhost:5000/gallery');
+    return res.json();
+  })
 
   const [model, setModel] = useState(false);
   const [tempImg, setTempImg] = useState('');
 
-  const getImg = (imgSrc) => {
-    setTempImg(imgSrc);
+  const getImg = (image) => {
+    setTempImg(image);
     setModel(true);
   };
 
@@ -72,11 +35,17 @@ const Gallery = () => {
         </div>
       ) : (
         <>
-          <Helmet><title>Gallery | RUEC</title></Helmet>
+            <Helmet><title>Gallery | RUEC</title></Helmet>
+            <div className='flex flex-col items-center pt-10' data-aos="zoom-in" data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000">
+              <img src={logo} alt="" width={60} />
+              <h1 className='md:text-3xl text-2xl font-bold text-center uppercase text-[#136734]'>Memories are here</h1>
+            </div>
+
           <Container>
             <div className="py-16">
                 <div className={model ? "model open" : "model"}>
-                  <img src={tempImg} alt="" />
+                  <LazyLoadImage effect="blur" loading='lazy' src={tempImg} alt="" className='hover:scale-110 hover:duration-500 duration-500 cursor-pointer' />
                   <div className="close-icon" onClick={() => setModel(false)}>
                     <GrClose className='rounded-full p-2 bg-slate-200' />
                   </div>
@@ -86,9 +55,9 @@ const Gallery = () => {
                 {
                   data.map((item) => {
                     return (
-                      <div className='pics' key={item.id} onClick={() => getImg(item.imgSrc)}>
-                        <img src={item.imgSrc} alt="" className='border-8 rounded' data-aos="fade-up" data-aos-easing="ease-out-cubic"
-                          data-aos-duration="1000" />
+                      <div className='pics' key={item._id} onClick={() => getImg(item.image)} data-aos="fade-up" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000">
+                        <LazyLoadImage effect="blur" loading='lazy' src={item.image} alt="" className='border-8 rounded' title={item.name} />
                       </div>
                     );
                   })

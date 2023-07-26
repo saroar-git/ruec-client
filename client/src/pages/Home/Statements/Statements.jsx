@@ -6,20 +6,22 @@ import { BsFacebook, BsWhatsapp } from 'react-icons/bs';
 import { FaLinkedin } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Statements = () => {
   return (
     <>
       <div className='flex flex-col items-center mb-12 md:mb-4' data-aos="zoom-in" data-aos-easing="ease-out-cubic"
         data-aos-duration="1000">
-        <img src={logo} alt="" width={60} />
-        <h1 className='md:text-4xl text-2xl font-bold text-center uppercase text-[#136734]'>Statements</h1>
+        <LazyLoadImage effect="blur" loading='lazy'  src={logo} alt="" width={60} />
+        <h1 className='md:text-4xl text-2xl font-bold text-center uppercase text-[#136734]'>Messages</h1>
       </div>
 
       <div className='mb-24 mt-14 md:flex items-center justify-between'>
         <div className='flex flex-col items-center mt-2 space-y-2' data-aos="zoom-in" data-aos-easing="ease-out-cubic"
           data-aos-duration="2000">
-          <img src={first} alt="" className='h-52 w-52 shadow-sm rounded' />
+          <LazyLoadImage effect="blur" loading='lazy'  src={first} alt="" className='h-52 w-52 shadow-sm rounded' />
           <h1 className='text-xl md:text-2xl font-bold'>Fuad Pablo</h1>
           <p className='font-semibold'>Founder and President </p>
           <small className='font-semibold'>Rajshahi University Education Club</small>
@@ -107,7 +109,7 @@ const Statements = () => {
 
         <div className='flex flex-col items-center mt-2 space-y-2' data-aos="zoom-in" data-aos-easing="ease-out-cubic"
           data-aos-duration="2000">
-          <img src={second} alt="" className='h-52 w-52 shadow-sm rounded' />
+          <LazyLoadImage effect="blur" loading='lazy'  src={second} alt="" className='h-52 w-52 shadow-sm rounded' />
           <h1 className='text-xl md:text-2xl font-bold'>Tamim Al Nur</h1>
           <p className='font-semibold'>Co-Founder and General Secretary </p>
           <small className='font-semibold'>Rajshahi University Education Club</small>

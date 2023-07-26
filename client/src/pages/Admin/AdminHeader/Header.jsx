@@ -2,29 +2,30 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Container from '../../../components/Container';
 import { BiMenuAltLeft, BiXCircle } from "react-icons/bi";
-import logo from '/logo.png';
+import logo from '/logo1.png';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
 
   const Links = [
-    { name: "Home", link: "/" },
-    { name: "Blogs", link: "/addblogs" },
-    { name: "Gallery", link: "/addgallery" },
-    { name: "Events", link: "/addevents" },
-    { name: "Advisory", link: "/addAdvisory" },
-    { name: "Committee", link: "/addCommittee" },
-    { name: "Features", link: "/addfeatures" },
+    { name: "Users", link: "/dashboard" },
+    { name: "Members", link: "/dashboard/members" },
+    { name: "Blogs", link: "/dashboard/addBlogs" },
+    { name: "Gallery", link: "/dashboard/addGallery" },
+    { name: "Events", link: "/dashboard/addEvents" },
+    { name: "Advisory", link: "/dashboard/addAdvisory" },
+    { name: "Committee", link: "/dashboard/addCommittee" },
+    { name: "Features", link: "/dashboard/addFeatures" },
   ];
 
   return (
     <div className='shadow-sm w-full fixed top-0 left-0 md:overflow-hidden border-b-[1px] z-10'>
       <Container>
-        <div className='md:flex items-center justify-between bg-white py-1 md:px-10 px-6'>
+        <div className='md:flex items-center justify-between bg-white py-2 md:px-10 px-6'>
           <div className='font-bold text-2xl cursor-pointer flex items-center'>
             <Link to='/' >
-              <img src={logo} width={65} alt="" />
+              <img src={logo} width={250} alt="" />
             </Link>
           </div>
 

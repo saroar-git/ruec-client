@@ -5,6 +5,8 @@ import { BsFacebook, BsWhatsapp } from 'react-icons/bs';
 import { FaLinkedin } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { ScaleLoader } from 'react-spinners';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const President = () => {
   const [loading, setLoading] = useState(true);
@@ -23,7 +25,7 @@ const President = () => {
             <div className='relative' data-aos="slide-right" data-aos-easing="ease-out-cubic"
               data-aos-duration="2000">
             <div className='flex flex-col items-center mt-2 space-y-2'>
-              <img src={first} alt="" className='h-52 w-52 shadow-sm rounded' />
+                <LazyLoadImage effect="blur" loading='lazy' src={first} alt="" className='h-52 w-52 shadow-sm rounded' />
               <h1 className='text-xl md:text-2xl font-bold'>Fuad Pablo</h1>
                 <p className='font-semibold'>Founder and President </p>
               <small className='font-semibold'>Rajshahi University Education Club</small>

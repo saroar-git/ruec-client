@@ -1,50 +1,80 @@
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { TbFidgetSpinner } from 'react-icons/tb';
 import logo from '/logo.png';
+import { useState } from "react";
 
 const Register = () => {
   const { createUser, updateUserProfile, logout } = useAuth();
+  const [submit, setSubmit] = useState()
 
   const handleRegister = (e) => {
     e.preventDefault();
+
+    setSubmit(true)
     const form = e.target;
     const name = form.name.value;
-    const photo = form.photo.value;
+    const image = form.image.files[0];
     const phone = form.phone.value;
     const department = form.department.value;
     const session = form.session.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    createUser(email, password)
-      .then(result => {
-        const createdUser = result.user;
-        console.log(createdUser);
+    // image handle
+    const formData = new FormData();
+    formData.append('image', image);
 
-        updateUserProfile(name, photo)
-          .then(() => {
-            const saveUser = { name: name, email: email, phone: phone, department: department, session: session, role: 'pending', status: 'pending' };
+    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_hosting}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(res => res.json())
+      .then(imageData => {
+        const imageUrl = imageData.data.display_url;
 
-            fetch('http://localhost:5000/users', {
-              method: 'POST',
-              headers: { 'content-type': 'application/json' },
-              body: JSON.stringify(saveUser)
-            })
-              .then(res => res.json())
-              .then(data => {
-                if (data.insertedId) {
-                  toast.success('Membership is Pending!');
-                  form.reset();
-                  logout();
+        createUser(email, password)
+          .then(result => {
 
-                }
+            updateUserProfile(name, imageUrl)
+              .then(() => {
+                const saveUser = { name: name, photo: imageUrl, email: email, phone: phone, department: department, session: session, role: 'pending' };
+
+                fetch('http://localhost:5000/users', {
+                  method: 'POST',
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(saveUser)
+                })
+                  .then(res => res.json())
+                  .then(data => {
+                    if (data.insertedId) {
+                      setSubmit(false);
+                      toast.success('Membership is Pending!');
+                      form.reset();
+                      logout();
+                    }
+                  })
+                  .then(() => { })
+                  .catch(error => {
+                    setSubmit(false);
+                    toast.error(error.message);
+                  })
               })
-              .then(() => { })
-              .catch(error => toast.error(error.message));
+              .catch(error => {
+                setSubmit(false);
+                toast.error(error.message);
+              });
           })
-          .catch(error => toast.error(error.message));
+          .catch(error => {
+            setSubmit(false);
+            toast.error(error.message);
+          });
       })
-      .catch(error => toast.error(error.message));
+      .catch(error => {
+        setSubmit(false);
+        toast.error(error.message);
+      })
   };
 
   return (
@@ -105,7 +135,7 @@ const Register = () => {
                     <label
                       htmlFor="name"
                       className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Department/Institute*
+                      Department*
                     </label>
                   </div>
 
@@ -159,10 +189,16 @@ const Register = () => {
                 <div className="md:flex md:justify-between items-center text-center  pt-7 pb-5">
                   <div className="relative pb-7">
                     <label className="text-sm absolute -top-5 left-0">Image*</label>
-                    <input type="file" name="photo" className="file-input border-[#04431d] file-input-xs max-w-xs" />
+                    <input type="file" name="image" className="file-input border-[#04431d] file-input-xs max-w-xs" />
                   </div>
 
-                  <input type="submit" value="Submit" className="px-3 py-1 text-white cursor-pointer bg-[#207f46] hover:bg-[#04431d] hover:scale-95 duration-300 hover:duration-300  rounded" />
+                  <button type="submit" className="px-3 py-1 text-white cursor-pointer bg-[#207f46] hover:bg-[#04431d] hover:scale-95 duration-300 hover:duration-300  rounded w-24">
+                    {submit ? (
+                      <TbFidgetSpinner className='m-auto animate-spin' size={24} />
+                    ) : (
+                      'Submit'
+                    )}
+                  </button>
                 </div>
               </form>
             </div>

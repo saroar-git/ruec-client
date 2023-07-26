@@ -2,8 +2,6 @@ import Container from "../components/Container";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
-import { animateScroll as scroll } from 'react-scroll';
-import { BsRocketFill } from "react-icons/bs";
 import Header from "../pages/Admin/AdminHeader/Header";
 
 const Admin = () => {
@@ -11,13 +9,6 @@ const Admin = () => {
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
   }, []);
-
-  const handleSmoothScroll = () => {
-    scroll.scrollToTop({
-      duration: 500,
-      smooth: true,
-    });
-  };
 
   return (
     <>
@@ -34,10 +25,6 @@ const Admin = () => {
                 <Outlet />
             </div>
             </Container>
-            <button onClick={handleSmoothScroll} className="absolute bottom-20 md:bottom-4 right-4 font-bold flex flex-col items-center">
-              <BsRocketFill className="animate-bounce" />
-              Jump to Top
-            </button>
         </div>
       )}
     </>

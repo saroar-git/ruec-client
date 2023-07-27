@@ -53,6 +53,7 @@ async function run() {
     const advisoriesCollection = client.db("ruec").collection("advisories");
     const galleryCollection = client.db("ruec").collection("gallery");
     const eventsCollection = client.db("ruec").collection("events");
+    const featuresCollection = client.db("ruec").collection("features");
 
     // handle jwt
     app.post('/jwt', (req, res) => {
@@ -72,6 +73,15 @@ async function run() {
     app.get('/users', async (req, res) => {
       const result = await usersCollection.find().toArray();
       res.send(result);
+    });
+
+    // get user by admin role
+    app.get('/admin/:email', async (req, res) => {
+      const email = req.params.email;
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+      const isAdmin = user?.role === 'admin';
+      res.json({ admin: isAdmin });
     });
 
     // get user by email
@@ -209,6 +219,19 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await eventsCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    //set feature info
+    app.post('/features', async (req, res) => {
+      const user = req.body;
+      const result = await featuresCollection.insertOne(user);
+      res.send(result);
+    });
+
+    //get feature info
+    app.get('/features', async (req, res) => {
+      const result = await featuresCollection.find().toArray();
       res.send(result);
     });
 

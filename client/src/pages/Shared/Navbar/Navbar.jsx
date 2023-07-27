@@ -7,12 +7,13 @@ import useAuth from '../../../hooks/useAuth';
 import Button from '../../../components/Button';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import "react-lazy-load-image-component/src/effects/blur.css";
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showCommunitySubLinks, setShowCommunitySubLinks] = useState(false);
   const { user } = useAuth();
-  const isAdmin = true;
+  const [isAdmin, isAdminLoading] = useAdmin();
 
   const handleClose = () => setOpen(false);
 
@@ -26,17 +27,18 @@ const Navbar = () => {
     { name: "About Us", link: "/about" },
   ];
 
-  if (user) {
+  if (user && !isAdmin) {
     Links.push({ name: "Profile", link: "/profile" });
   }
-  if (isAdmin && user) {
+
+  if (!isAdminLoading && isAdmin) {
     Links.push({ name: "Dashboard", link: "/dashboard" });
   }
 
   return (
     <div className='shadow-sm w-full border-b-[1px] bg-white'>
       <Container>
-        <div className='md:flex items-center justify-between bg-white py-1 md:px-10 px-6'>
+        <div className='lg:flex items-center justify-between bg-white py-1 lg:px-10 px-6'>
           <div className='font-bold text-2xl cursor-pointer flex items-center py-2'>
             <Link to='/' >
               <LazyLoadImage effect="blur" loading='lazy' src={logo} width={200} alt="" />
@@ -44,14 +46,14 @@ const Navbar = () => {
           </div>
 
           <div onClick={() => setOpen(!open)}
-            className='text-3xl absolute right-8 top-5 cursor-pointer md:hidden bg-white'>
+            className='text-3xl absolute right-8 top-5 cursor-pointer lg:hidden bg-white'>
             {open ? <BiXCircle /> : <BiMenu />}
           </div>
 
-          <ul className={`md:flex md:items-center pb-6 md:pb-0 absolute md:static bg-white md:z-auto z-10 left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'left- opacity-100' : 'left-[-490px]'} md:opacity-100 opacity-0`}>
+          <ul className={`lg:flex lg:items-center pb-6 lg:pb-0 absolute lg:static bg-white lg:z-auto z-10 left-0 w-full lg:w-auto lg:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'left- opacity-100' : 'left-[-490px]'} lg:opacity-100 opacity-0`}>
             {
               Links.map((link, index) => (
-                <li key={index} className='md:mr-5 text-lg my-4 md:my-0 nav bg-white group'>
+                <li key={index} className='lg:mr-5 text-lg my-4 lg:my-0 nav bg-white group'>
                   {link.name === 'Community' ? (
                     <div
                       onMouseEnter={() => setShowCommunitySubLinks(true)}
@@ -62,7 +64,7 @@ const Navbar = () => {
                       {link.name}
                       {showCommunitySubLinks && (
                         <div className='pt-20 space-y-2 flex items-center absolute z-20 w-full'>
-                          <div className="absolute top-1 hidden group-hover:md:block hover:md:block shadow-2xl">
+                          <div className="absolute top-1 hidden group-hover:lg:block hover:lg:block shadow-2xl">
                             <div className="py-3">
                               <div className="w-4 h-4 left-3  absolute mt-1 bg-white border-l border-t border-[#59BB4D] rotate-45"></div>
                             </div>
@@ -82,8 +84,8 @@ const Navbar = () => {
                         </div>
                       )}
 
-                      {/* Mobile device */}
-                      <div className='md:hidden space-y-3 mt-3 ml-5 pl-2 border-l-[0.5px] border-[#0f170e] '>
+                      {/* medium to small device */}
+                      <div className='lg:hidden space-y-3 mt-3 ml-5 pl-2 border-l-[0.5px] border-[#0f170e] '>
                         {link.subLinks.map((subLink, idx) => (
                           <NavLink
                             key={idx}

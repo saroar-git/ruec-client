@@ -17,22 +17,22 @@ const Footer = () => {
         <div>
           <h2 className="footer-title">Contact</h2>
 
-          <div className='flex items-start  gap-2'>
-            <FaLocationDot className='text-lg text-[#FF182C]' />
+          <div className='flex items-start gap-2'>
+            <FaLocationDot className='text-lg text-[#FF182C] mx-1 md:mx-0' />
             <Link to='https://www.google.com/maps/dir/?api=1&destination=24.368570316306%2C88.639755&fbclid=IwAR2HpvS3kz4g0R72sl9RyE5x9ZAbFNcXNUx8cB6MXdsl7UV9kUS2fUIxlrE' target='_blank' className='hover:link'>
               Room No - 205, 2nd Floor, <br /> RUCSU building, Rajshahi University, <br /> Rajshahi, Bangladesh.
             </Link>
           </div>
 
-          <div className='flex items-center  gap-2'>
-            <BiMailSend className='text-lg text-purple-600' />
+          <div className='flex items-center gap-2'>
+            <BiMailSend className='text-lg text-purple-600 mx-1 md:mx-0' />
             <Link to="mailto:rueducationclub@gmail.com" target="_blank" className='hover:link'>
               rueducationclub@gmail.com
             </Link>
           </div>
 
-          <div className='flex items-center  gap-2'>
-            <BiPhone className='text-xl text-green-700' />
+          <div className='flex items-center gap-2'>
+            <BiPhone className='text-xl text-green-700 mx-1 md:mx-0' />
             <p className='hover:link'>
             +880 1600-248401
             </p>
@@ -42,29 +42,29 @@ const Footer = () => {
         <div>
           <h2 className="footer-title">Social Links</h2>
 
-          <div className='flex items-start  gap-2'>
-            <BiLogoFacebookCircle className='text-xl text-[#1877F2]' />
+          <div className='flex items-start gap-2'>
+            <BiLogoFacebookCircle className='text-xl text-[#1877F2] mx-1 md:mx-0' />
             <Link to='https://www.facebook.com/rueduclub' target='_blank' className='hover:link'>
               Facebook Page
             </Link>
           </div>
 
-          <div className='flex items-start  gap-2'>
-            <BiLogoLinkedin className='text-xl text-[#0A66C2]' />
+          <div className='flex items-start gap-2'>
+            <BiLogoLinkedin className='text-xl text-[#0A66C2] mx-1 md:mx-0' />
             <Link to='https://www.linkedin.com/company/rajshahi-university-education-club-ruec/' target='_blank' className='hover:link'>
               LinkedIn Page
             </Link>
           </div>
 
-          <div className='flex items-start  gap-2'>
-            <IoLogoWhatsapp className='text-lg text-[#25D366]' />
+          <div className='flex items-start gap-2'>
+            <IoLogoWhatsapp className='text-lg text-[#25D366] mx-1 md:mx-0' />
             <Link to="https://wa.me/01600248401" target="_blank" className='hover:link'>
               WhatsApp Now
             </Link>
           </div>
 
-          <div className='flex items-start  gap-2'>
-            <BiLogoYoutube className='text-xl text-[#FF0000]' />
+          <div className='flex items-start gap-2'>
+            <BiLogoYoutube className='text-xl text-[#FF0000] mx-1 md:mx-0' />
             <Link to="https://www.youtube.com/@rajshahiuniversityeducatio3505" target="_blank" className='hover:link'>
               Youtube Channel
             </Link>

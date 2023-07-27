@@ -45,7 +45,7 @@ const Events = () => {
                 <Tabs>
                   <TabList className="text-green-700 font-semibold mb-8 bg-base-200 rounded">
                     <Tab>Upcoming</Tab>
-                    <Tab>Completed</Tab>
+                    <Tab>Recent</Tab>
                   </TabList>
 
                   <TabPanel>

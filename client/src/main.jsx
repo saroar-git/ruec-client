@@ -32,6 +32,9 @@ import AddEvents from './pages/Admin/Events/AddEvents';
 import AddGallery from './pages/Admin/Gallery/AddGallery';
 import Members from './pages/Members/Members';
 import Member from './pages/Admin/Member/Member';
+import AdminRoute from './routes/AdminRoute';
+import AddFeatures from './pages/Admin/AddFeatures/AddFeatures';
+import AddBlogs from './pages/Admin/AddBlogs/AddBlogs';
 
 const router = createBrowserRouter([
   {
@@ -57,15 +60,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <PrivateRoute><Admin /></PrivateRoute>,
+    element: <AdminRoute><Admin /></AdminRoute>,
     errorElement: <Error />,
     children: [
-      { path: '/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute> },
-      { path: '/dashboard/members', element: <PrivateRoute><Member /></PrivateRoute> },
-      { path: '/dashboard/addCommittee', element: <PrivateRoute><AddCommittee /></PrivateRoute> },
-      { path: '/dashboard/addAdvisory', element: <PrivateRoute><AddAdvisory /></PrivateRoute> },
-      { path: '/dashboard/addEvents', element: <PrivateRoute><AddEvents /></PrivateRoute> },
-      { path: '/dashboard/addGallery', element: <PrivateRoute><AddGallery /></PrivateRoute> },
+      { path: '/dashboard', element: <AdminRoute><Dashboard /></AdminRoute> },
+      { path: '/dashboard/members', element: <AdminRoute><Member /></AdminRoute> },
+      { path: '/dashboard/addBlogs', element: <AdminRoute><AddBlogs /></AdminRoute> },
+      { path: '/dashboard/addCommittee', element: <AdminRoute><AddCommittee /></AdminRoute> },
+      { path: '/dashboard/addAdvisory', element: <AdminRoute><AddAdvisory /></AdminRoute> },
+      { path: '/dashboard/addEvents', element: <AdminRoute><AddEvents /></AdminRoute> },
+      { path: '/dashboard/addGallery', element: <AdminRoute><AddGallery /></AdminRoute> },
+      { path: '/dashboard/addFeatures', element: <AdminRoute><AddFeatures /></AdminRoute> },
     ]
   }
 ]);

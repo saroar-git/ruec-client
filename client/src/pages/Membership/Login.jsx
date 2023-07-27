@@ -114,7 +114,7 @@ const Login = () => {
 
                           <p className="pt-3 md:flex items-center gap-1">
                             Not a member?
-                            <span className="text-red-600 text-base animate-pulse  hover:text-[#136734] font-semibold cursor-pointer flex items-center gap-1"> Apply now
+                            <span className="text-red-600 text-base animate-pulse  hover:text-[#136734] font-semibold cursor-pointer flex items-center gap-1 ml-7 md:ml-0"> Apply now
                               <BiSolidRightArrowCircle className="hidden md:block" />
                               <BiSolidDownArrowCircle className="md:hidden"/>
                             </span>

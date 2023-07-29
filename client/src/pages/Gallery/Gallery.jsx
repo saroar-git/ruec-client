@@ -15,7 +15,7 @@ const Gallery = () => {
   }, []);
 
   const { data: data = [] } = useQuery(['Images'], async () => {
-    const res = await fetch('http://localhost:5000/gallery');
+    const res = await fetch('https://ruec-server.vercel.app/gallery');
     return res.json();
   })
 

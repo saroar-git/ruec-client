@@ -43,7 +43,7 @@ const AddAdvisory = () => {
         const imageUrl = imageData.data.display_url;
 
         const saveUser = { id: parseInt(id), name, image: imageUrl, phone, email, department, type, designation, facebook, linkedin };
-        fetch('http://localhost:5000/advisory', {
+        fetch('https://ruec-server.vercel.app/advisory', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(saveUser)

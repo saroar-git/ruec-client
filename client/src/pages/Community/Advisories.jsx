@@ -10,7 +10,7 @@ import Card from '../../components/Card';
 const Advisories = () => {
   const [advisories, setAdvisories] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/advisory')
+    fetch('https://ruec-server.vercel.app/advisory')
       .then(res => res.json())
       .then(data => setAdvisories(data));
   }, []);

@@ -16,7 +16,7 @@ const Member = () => {
   }, []);
 
   const { data: members = [], refetch } = useQuery(['members'], async () => {
-    const res = await fetch(`http://localhost:5000/members?email=${user.email}`);
+    const res = await fetch(`https://ruec-server.vercel.app/members?email=${user.email}`);
     return res.json();
   });
 
@@ -24,7 +24,7 @@ const Member = () => {
   const handleDelete = (id) => {
     setIsDeleting(true);
 
-    fetch(`http://localhost:5000/members/admin/${id._id}`, {
+    fetch(`https://ruec-server.vercel.app/members/admin/${id._id}`, {
       method: 'DELETE'
     })
       .then((res) => res.json())

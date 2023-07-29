@@ -4,7 +4,6 @@ import { Outlet, ScrollRestoration } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ScaleLoader } from "react-spinners";
 import Footer from "../pages/Shared/Footer/Footer";
-import { animateScroll as scroll } from 'react-scroll';
 import { BsRocketFill } from "react-icons/bs";
 
 const Main = () => {
@@ -13,12 +12,14 @@ const Main = () => {
     setTimeout(() => setLoading(false), 2000);
   }, []);
 
-  const handleSmoothScroll = () => {
-    scroll.scrollToTop({
-      duration: 500,
-      smooth: true,
-    });
-  };
+  const [hideScrollTopBtn, setHideScrollTopBtn] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      setHideScrollTopBtn(document.documentElement.scrollTop < 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -35,9 +36,12 @@ const Main = () => {
                 <Outlet />
               </Container>
               <Footer />
-              <button onClick={handleSmoothScroll} className="absolute bottom-20 md:bottom-4 right-4 font-bold flex flex-col items-center">
-                <BsRocketFill className="animate-bounce"/>
-                Jump to Top
+              <button
+                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+                className={`fixed bottom-3 right-3 btn bg-[#59BB4D] btn-square btn-circle z-20 text-xl disabled:opacity-0 ${hideScrollTopBtn ? "hidden" : ""
+                  }`}
+              >
+                <BsRocketFill className="animate-bounce text-white" />
               </button>
           </div>          
         </div>

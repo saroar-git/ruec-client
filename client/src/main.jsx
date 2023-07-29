@@ -19,6 +19,7 @@ import Events from './pages/Events/Events';
 import Features from './pages/Features/Features';
 import AuthProvider from './context/AuthProvider';
 import Profile from './pages/Profile/Profile';
+import MakeBlog from './pages/Profile/MakeBlog';
 import PrivateRoute from './routes/PrivateRoute';
 import Admin from './layout/Admin';
 import Dashboard from './pages/Admin/Dashboard/Dashboard';
@@ -55,7 +56,8 @@ const router = createBrowserRouter([
       { path: '/member', element: <Members /> },
 
       { path: '/login', element: <Login /> },
-      { path: '/profile', element: <PrivateRoute><Profile /></PrivateRoute> }
+      { path: '/profile', element: <PrivateRoute><Profile /></PrivateRoute> },
+      { path: '/makeBlog', element: <PrivateRoute><MakeBlog /></PrivateRoute> }
     ]
   },
   {

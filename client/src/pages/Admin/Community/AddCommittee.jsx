@@ -43,7 +43,7 @@ const Blogs = () => {
         const imageUrl = imageData.data.display_url;
 
         const saveUser = { id:parseInt(id), name, image: imageUrl, phone, email, department, session, position, facebook, linkedin, };
-        fetch('http://localhost:5000/committee', {
+        fetch('https://ruec-server.vercel.app/committee', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(saveUser)

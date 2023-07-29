@@ -40,7 +40,7 @@ const AddEvents = () => {
         const imageUrl = imageData.data.display_url;
 
         const saveUser = { link, image: imageUrl, date, status: 'upcoming' };
-        fetch('http://localhost:5000/events', {
+        fetch('https://ruec-server.vercel.app/events', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(saveUser)
@@ -62,13 +62,13 @@ const AddEvents = () => {
   };
 
   const { data: events = [], refetch } = useQuery(['events'], async () => {
-    const res = await fetch('http://localhost:5000/events');
+    const res = await fetch('https://ruec-server.vercel.app/events');
     return res.json();
   });
 
   // make admin
   const handleComplete = event => {
-    fetch(`http://localhost:5000/events/${event._id}`, {
+    fetch(`https://ruec-server.vercel.app/events/${event._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -89,7 +89,7 @@ const AddEvents = () => {
   const handleDelete = event => {
     setIsDeleting(true);
 
-    fetch(`http://localhost:5000/events/${event._id}`, {
+    fetch(`https://ruec-server.vercel.app/events/${event._id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

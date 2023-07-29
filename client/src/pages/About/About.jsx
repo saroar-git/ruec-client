@@ -3,11 +3,18 @@ import { Helmet } from "react-helmet-async";
 import { ScaleLoader } from "react-spinners";
 import Container from "../../components/Container";
 import { Link } from "react-router-dom";
+import CountUp from 'react-countup';
 
 const About = () => {
+  const [counter, setCounter] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 500);
+    setCounter(true);
   }, []);
 
   return (
@@ -25,10 +32,38 @@ const About = () => {
                   data-aos-duration="1000">
                   Welcome to the Rajshahi University Education Club!
                 </h1>
-                <p className="font-semibold md:text-center text-justify" data-aos="fade-up" data-aos-easing="ease-out-cubic"
+                <p className="font-semibold md:text-center text-justify w-10/12 mx-auto" data-aos="fade-up" data-aos-easing="ease-out-cubic"
                   data-aos-duration="1000">
                   At Rajshahi University Education Club, we are passionate about education and dedicated to creating a transformable learning experience for students. As the first club at Rajshahi University solely focused on education, we strive to cultivate a vibrant community where students can thrive academically, foster innovation, and engage in meaningful research.
                 </p>
+
+                <div className='grid grid-cols-2 md:grid-cols-4 w-full h-32 my-16 rounded px-6 gap-8'>
+
+                  <div className="p-4 flex flex-col items-center bg-[#D3F4EC] group">
+                    <div className="md:text-2xl mb-4 font-extrabold">
+                      Active Members</div>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={100} duration={6} delay={0} />}+</span>
+                  </div>
+
+                  <div className="p-4 flex flex-col items-center bg-[#FCE8D4] group">
+                    <div className="md:text-2xl mb-4 font-extrabold">
+                      Recent Events</div>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={40} duration={5} delay={0} />}+</span>
+                  </div>
+
+                  <div className="p-4 flex flex-col items-center bg-[#E3F9E0] group">
+                    <div className="md:text-2xl mb-4 font-extrabold">
+                      Student Counselling</div>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={2000} duration={7} delay={0} />}+</span>
+                  </div>
+
+                  <div className="p-4 flex flex-col items-center bg-[#ddecfb] group">
+                    <div className="md:text-2xl mb-4 font-extrabold">
+                      Yearly Reach</div>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={50000} duration={9} delay={0} />}+</span>
+                  </div>
+
+                </div>
 
                 <div data-aos="fade-up" data-aos-easing="ease-out-cubic"
                   data-aos-duration="1000">

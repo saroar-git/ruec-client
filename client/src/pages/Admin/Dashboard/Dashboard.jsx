@@ -14,20 +14,30 @@ const Dashboard = () => {
   const [isDeleting, setIsDeleting] = useState('');
 
   const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch(`http://localhost:5000/users?email=${user.email}`);
+    const res = await fetch(`https://ruec-server.vercel.app/users?email=${user.email}`);
     return res.json();
   });
 
   // make member
   const handleApprove = (user) => {
-    fetch(`http://localhost:5000/users/member/${user._id}`, {
+    console.log(user);
+    fetch(`https://ruec-server.vercel.app/users/member/${user._id}`, {
       method: 'PATCH'
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          const memberData = { ...user, role: 'member' };
-          fetch('http://localhost:5000/member', {
+          const memberData = {
+            department: user.department,
+            email: user.email,
+            name: user.name,
+            phone: user.phone,
+            photo: user.photo,
+            session: user.session,
+            ItemId: user._id,
+            role: 'member'
+          };
+          fetch('https://ruec-server.vercel.app/member', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(memberData)
@@ -35,7 +45,7 @@ const Dashboard = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
-                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                fetch(`https://ruec-server.vercel.app/users/admin/${user._id}`, {
                   method: 'DELETE'
                 })
                   .then((res) => res.json())
@@ -57,7 +67,7 @@ const Dashboard = () => {
 
   // make admin
   const handleMakeAdmin = user => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://ruec-server.vercel.app/users/admin/${user._id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -74,7 +84,7 @@ const Dashboard = () => {
   const handleDelete = user => {
     setIsDeleting(true);
 
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://ruec-server.vercel.app/users/admin/${user._id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
@@ -154,7 +164,7 @@ const Dashboard = () => {
                       </td>
                       <td className="text-center flex gap-2 mt-3">
                         <button
-                          onClick={() => handleApprove(user)} disabled={user.role === 'member'}
+                          onClick={() => handleApprove(user)} disabled={user.role === 'member' || user.role === 'admin'} 
                           className="btn btn-outline text-[#136734] hover:bg-[#136734] normal-case"
                         >
                           <FaUserShield className='text-[#59BB4D] hidden md:block' /> Approve

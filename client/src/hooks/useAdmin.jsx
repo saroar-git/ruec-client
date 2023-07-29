@@ -7,7 +7,7 @@ const useAdmin = () => {
   const { data: isAdmin, isLoading: isAdminLoading } = useQuery(
     ['isAdmin', user?.email],
     async () => {
-      const res = await fetch(`http://localhost:5000/admin/${user?.email}`);
+      const res = await fetch(`https://ruec-server.vercel.app/admin/${user?.email}`);
       const data = await res.json();
       return data.admin;
     }

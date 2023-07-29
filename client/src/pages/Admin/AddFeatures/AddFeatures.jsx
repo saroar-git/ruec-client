@@ -27,7 +27,7 @@ const AddFeatures = () => {
     const image = form.image.value;
 
     const saveUser = { newspaper: name, image, heading, subHeading, date, text, link };
-    fetch('http://localhost:5000/features', {
+    fetch('https://ruec-server.vercel.app/features', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(saveUser)
@@ -40,7 +40,6 @@ const AddFeatures = () => {
         }
         setLoading(false);
       });
-
 
   };
   return (

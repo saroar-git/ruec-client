@@ -4,65 +4,61 @@ import { ScaleLoader } from 'react-spinners';
 import logo from '/logo.png';
 import Container from '../../../components/Container';
 import { toast } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
 
 const AddBlogs = () => {
   const [loading, setLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false)
 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 500);
   }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const { data: blogs = [], refetch } = useQuery(['users'], async () => {
+    const res = await fetch('https://ruec-server.vercel.app/blogs');
+    return res.json();
+  });
+
+  const handleApprove = item => {
     setLoading(true);
-
-    const form = e.target;
-    const id = form.id.value;
-    const name = form.name.value;
-    const phone = form.phone.value;
-    const designation = form.designation.value;
-    const email = form.email.value;
-    const department = form.department.value;
-    const type = form.type.value;
-    const facebook = form.facebook.value;
-    const linkedin = form.linkedin.value;
-    const image = form.image.files[0];
-
-    // image handle
-    const formData = new FormData();
-    formData.append('image', image);
-
-    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_hosting}`;
-    fetch(url, {
-      method: 'POST',
-      body: formData,
+    fetch(`https://ruec-server.vercel.app/blogs/${item._id}`, {
+      method: 'PATCH'
     })
       .then(res => res.json())
-      .then(imageData => {
-        const imageUrl = imageData.data.display_url;
-
-        const saveUser = { id: parseInt(id), name, image: imageUrl, phone, email, department, type, designation, facebook, linkedin };
-        fetch('http://localhost:5000/advisory', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(saveUser)
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.insertedId) {
-              toast.success('Data Submitted!');
-              form.reset();
-            }
-            setLoading(false);
-          });
+      .then(data => {
+        if (data.modifiedCount) {
+          refetch();
+          toast.success('Blog Approved');
+          setIsLoading(false);
+        }
       })
       .catch(error => {
+        toast.error(error.message);
         setLoading(false);
+      });
+  };
+
+  const handleRemove = blog => {
+    setDeleting(true);
+
+    fetch(`https://ruec-server.vercel.app/blogs/${blog._id}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 1) {
+          setDeleting(false);
+          refetch();
+          toast.success('Blog has been removed');
+        }
+      })
+      .catch(error => {
+        setDeleting(false);
         toast.error(error.message);
       });
-
   };
+
   return (
     <>
       {isLoading ? (
@@ -71,175 +67,50 @@ const AddBlogs = () => {
         </div>
       ) : (
         <>
-          <Helmet><title>Add Advisories</title></Helmet>
-          <Container>
-            <div className="pt-28 md:pb-8">
-              <div className='flex flex-col items-center mb-12 md:mb-4' data-aos="zoom-in" data-aos-easing="ease-out-cubic"
-                data-aos-duration="1000">
-                <img src={logo} alt="" width={50} />
-                <h1 className='md:text-3xl text-xl font-bold text-center uppercase text-[#136734]'>Add Advisory</h1>
+            <Helmet><title>Add Blogs</title></Helmet>
+            <Container>
+              <div className="pt-28">
+                <div className='flex flex-col items-center mb-12 md:mb-4' data-aos="zoom-in" data-aos-easing="ease-out-cubic"
+                  data-aos-duration="1000">
+                  <img src={logo} alt="" width={50} />
+                  <h1 className='md:text-3xl text-xl font-bold text-center uppercase text-[#136734]'>Add Blogs</h1>
+                </div>
               </div>
-            </div>
 
-            <div className="divide-y divide-gray-200 border border-green-700 p-10 rounded-md">
-              <form className="text-base leading-6 space-y-5 text-gray-700 sm:text-lg sm:leading-7" onSubmit={handleSubmit}>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <input
-                      name="name"
-                      type="text"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="Full Name"
-                      required />
-
-                    <label
-                      htmlFor="name"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Full Name*
-                    </label>
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      name="phone"
-                      type="number"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="+880"
-                      required />
-
-                    <label
-                      htmlFor="phone"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Phone Number*
-                    </label>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <input
-                      name="designation"
-                      type="text"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="Designation"
-                      required />
-
-                    <label
-                      htmlFor="designation"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Designation*
-                    </label>
-                  </div>
-
-
-                  <div className="relative">
-                    <input
-                      name="email"
-                      type="email"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="Email"
-                      required />
-
-                    <label
-                      htmlFor="email"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Email*
-                    </label>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <input
-                      name="department"
-                      type="text"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="Department/Institute"
-                      required />
-
-                    <label
-                      htmlFor="name"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Department*
-                    </label>
-                  </div>
-
-                  <div className="relative">
-                    <select className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 focus:outline-none focus:borer-rose-600 text-sm text-gray-700" name='type'>
-                      <option disabled selected required>Select Type*</option>
-                      <option>Teachers</option>
-                      <option>Students</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <input
-                      name="facebook"
-                      type="text"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="Facebook Link"
-                    />
-
-                    <label
-                      htmlFor="facebook"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      Facebook Link*
-                    </label>
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      name="linkedin"
-                      type="text"
-                      className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                      placeholder="LinkedIn"
-                    />
-
-                    <label
-                      htmlFor="linkedin"
-                      className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                      LinkedIn Link*
-                    </label>
-                  </div>
-                </div>
-
-                <div className="md:flex md:justify-between items-center text-center  pt-7">
-                  <div className="relative pb-7 md:flex items-center gap-6">
-                    <div>
-                      <label className="text-sm absolute -top-5 left-0">Image*</label>
-                      <input type="file" name="image" className="file-input border-[#04431d] file-input-xs max-w-xs" />
-                    </div>
-
-                    <div className="relative mt-4">
-                      <input
-                        name="id"
-                        type="number"
-                        className="peer placeholder-transparent h-10  w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                        placeholder="id"
-                        required />
-
-                      <label
-                        htmlFor="id"
-                        className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-                        ID*
-                      </label>
-                    </div>
-                  </div>
-
-                  <button type="submit" className="px-3 py-1 text-white cursor-pointer bg-[#207f46] hover:bg-[#04431d] hover:scale-95 duration-300 hover:duration-300  rounded">
-                    {loading ? (
-                      'Processing..'
-                    ) : (
-                      'Submit'
-                    )}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </Container>
+              <div className='pt-8 pb-16'>
+                {
+                  blogs.map(item => {
+                    return (
+                      <div key={item._id} className="card w-full md:card-side bg-base-100 shadow-xl relative">
+                        <figure className='w-72 m-auto'><img src={item.image} alt="Movie" /></figure>
+                        <div className="card-body w-full">
+                          <h2 className="card-title text-3xl">{item.heading}</h2>
+                          <div className='flex flex-col items-start'>
+                            <div className='flex items-center gap-4'>
+                              <p className=' flex items-center gap-2'>{item.name}</p> |
+                              <small className='text-xs flex items-center gap-2 mt-1'> {item.date}</small>
+                            </div>
+                            <p className='mt-8 text-justify'>{item.text}</p>
+                          </div>
+                          <button className='absolute top-0 right-0 px-2 py-1 border-[1px] rounded-lg bg-green-600 hover:scale-105 hover:bg-green-700 text-white font-semibold duration-500 hover:duration-500'
+                            onClick={() => handleApprove(item)}>
+                            {loading ? 'Wait..' :
+                              'Approve'
+                            }
+                          </button>
+                          <button className='absolute top-9 right-0 px-2 py-1 border-[1px] rounded-lg bg-red-600 hover:scale-105 hover:bg-red-700 text-white font-semibold duration-500 hover:duration-500'
+                            onClick={() => handleRemove(item)}>
+                            {deleting ? 'Wait..' :
+                              'Remove'
+                            }
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
+                }
+              </div>
+            </Container>
         </>
       )}
     </>

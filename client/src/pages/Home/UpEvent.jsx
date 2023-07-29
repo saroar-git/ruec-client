@@ -12,7 +12,7 @@ const UpEvent = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/events')
+    fetch('https://ruec-server.vercel.app/events')
       .then(res => res.json())
       .then(data => {
         data.sort((a, b) => new Date(b.date) - new Date(a.date));

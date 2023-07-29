@@ -54,6 +54,7 @@ async function run() {
     const galleryCollection = client.db("ruec").collection("gallery");
     const eventsCollection = client.db("ruec").collection("events");
     const featuresCollection = client.db("ruec").collection("features");
+    const blogsCollection = client.db("ruec").collection("blogs");
 
     // handle jwt
     app.post('/jwt', (req, res) => {
@@ -235,6 +236,37 @@ async function run() {
       res.send(result);
     });
 
+    //set blog info
+    app.post('/blogs', async (req, res) => {
+      const user = req.body;
+      const result = await blogsCollection.insertOne(user);
+      res.send(result);
+    });
+
+    //get blog info
+    app.get('/blogs', async (req, res) => {
+      const result = await blogsCollection.find().toArray();
+      res.send(result);
+    });
+
+    //blog approve
+    app.patch('/blogs/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const updateDoc = {
+        $set: { status: 'approve' }
+      };
+      const result = await blogsCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
+    //blog delete
+    app.delete('/blogs/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await blogsCollection.deleteOne(query);
+      res.send(result);
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });

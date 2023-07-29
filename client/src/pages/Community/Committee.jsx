@@ -8,7 +8,7 @@ import Cards from '../../components/Cards';
 const Committee = () => {
   const [committee, setCommittee] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/committee')
+    fetch('https://ruec-server.vercel.app/committee')
       .then(res => res.json())
       .then(data => setCommittee(data));
   }, []);

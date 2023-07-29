@@ -41,7 +41,7 @@ const Register = () => {
               .then(() => {
                 const saveUser = { name: name, photo: imageUrl, email: email, phone: phone, department: department, session: session, role: 'pending' };
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://ruec-server.vercel.app/users', {
                   method: 'POST',
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(saveUser)

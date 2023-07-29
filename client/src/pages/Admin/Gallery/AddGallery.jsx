@@ -35,7 +35,7 @@ const AddGallery = () => {
         const imageUrl = imageData.data.display_url;
 
         const saveUser = { name, image: imageUrl };
-        fetch('http://localhost:5000/gallery', {
+        fetch('https://ruec-server.vercel.app/gallery', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(saveUser)
@@ -64,7 +64,7 @@ const AddGallery = () => {
         </div>
       ) : (
         <>
-          <Helmet><title>Add Image</title></Helmet>
+            <Helmet><title>Add Images</title></Helmet>
           <Container>
             <div className="pt-28">
               <div className='flex flex-col items-center mb-12 md:mb-4' data-aos="zoom-in" data-aos-easing="ease-out-cubic"

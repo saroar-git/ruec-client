@@ -10,7 +10,7 @@ import { FaSchoolFlag } from 'react-icons/fa6';
 const Members = () => {
   const [members, setMembers] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/members')
+    fetch('https://ruec-server.vercel.app/members')
       .then(res => res.json())
       .then(data => setMembers(data));
   }, []);

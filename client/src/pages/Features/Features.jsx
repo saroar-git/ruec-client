@@ -16,7 +16,7 @@ const Features = () => {
   }, []);
 
   const { data: data = [] } = useQuery(['Features'], async () => {
-    const res = await fetch('http://localhost:5000/features');
+    const res = await fetch('https://ruec-server.vercel.app/features');
     const features = await res.json();
     features.sort((a, b) => new Date(b.date) - new Date(a.date));
     return features;

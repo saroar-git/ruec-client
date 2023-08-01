@@ -40,29 +40,29 @@ const Statements = () => {
 
           <div className='flex items-center gap-4 pt-5'>
             <p>Reach out with:-</p>
-            <a href="https://web.facebook.com/fuadpablu" target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="Facebook" color='bg-[#1877F2]'>
                 <BsFacebook size={25} />
               </IconButton>
-            </a>
+            </p>
 
-            <a href="mailto:fuadpablo.ru@gmail.com" target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="Email" color='bg-gradient-to-bl from-[#EA4335] to-[#34A853]'>
                 <SiGmail size={25} />
               </IconButton>
-            </a>
+            </p>
 
-            <a href='https://www.linkedin.com/in/fuad-pablo-003a081a6/' target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="LinkedIn" color='bg-[#0A66C2]'>
                 <FaLinkedin size={25} />
               </IconButton>
-            </a>
+            </p>
 
-            <a href="https://wa.me/01600248401" target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="WhatsApp" color='bg-[#25D366]'>
                 <BsWhatsapp size={25} />
               </IconButton>
-            </a>
+            </p>
           </div>
         </div>
       </div>
@@ -79,29 +79,29 @@ const Statements = () => {
 
           <div className='flex items-center gap-4 pt-5'>
             <p>Reach out with:-</p>
-            <a href="https://web.facebook.com/tamim.alnur.7" target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="Facebook" color='bg-[#1877F2]'>
                 <BsFacebook size={25} />
               </IconButton>
-            </a>
+            </p>
 
-            <a href="mailto:nurkutubulalam97@gmail.com" target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="Email" color='bg-gradient-to-bl from-[#EA4335] to-[#34A853]'>
                 <SiGmail size={25} />
               </IconButton>
-            </a>
+            </p>
 
-            <a href='https://www.linkedin.com/in/md-nurkutubul-alam/' target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="LinkedIn" color='bg-[#0A66C2]'>
                 <FaLinkedin size={25} />
               </IconButton>
-            </a>
+            </p>
 
-            <a href="https://wa.me/01316188272" target='_blank' rel='noopener noreferrer'>
+            <p>
               <IconButton text="WhatsApp" color='bg-[#25D366]'>
                 <BsWhatsapp size={25} />
               </IconButton>
-            </a>
+            </p>
           </div>
         </div>
 

@@ -36,7 +36,7 @@ const Members = () => {
           </div>
 
           <Container>
-            <div className='md:pt-8 pb-16'>
+            <div className='py-16'>
               <div>
                 <section className="container my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {members?.map((item) => (

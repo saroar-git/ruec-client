@@ -24,7 +24,6 @@ return (
       </div>
     ) : (
       <>
-        <Helmet><title>Events | RUEC</title></Helmet>
         <div>
           <Helmet><title>Home | RUEC</title></Helmet>
           <Banner />

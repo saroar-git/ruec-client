@@ -45,7 +45,7 @@ const Gallery = () => {
           <Container>
             <div className="py-16">
                 <div className={model ? "model open" : "model"}>
-                  <LazyLoadImage effect="blur" loading='lazy' src={tempImg} alt="" className='hover:scale-110 hover:duration-500 duration-500 cursor-pointer' />
+                  <LazyLoadImage effect="blur" loading='lazy' src={tempImg} alt="" className='hover:scale-110 hover:duration-1000 duration-1000 cursor-pointer' />
                   <div className="close-icon" onClick={() => setModel(false)}>
                     <GrClose className='rounded-full p-2 bg-slate-200' />
                   </div>

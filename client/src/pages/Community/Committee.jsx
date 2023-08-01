@@ -48,7 +48,7 @@ const Committee = () => {
           </div>
 
             <Container>
-              <div className='md:pt-8 pb-16'>
+              <div className='py-16'>
                 <div>
                   {presidentAndGeneralSecretary &&
                     <section className="container my-12 grid grid-cols-1 md:grid-cols-2 gap-8">

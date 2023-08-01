@@ -36,7 +36,7 @@ const Blogs = () => {
               <h1 className='md:text-3xl text-2xl font-bold text-center uppercase text-[#136734]'>Blogs</h1>
             </div>
           <Container>
-              <div className='pt-8 md:pt-14 pb-16'>
+              <div className='py-16'>
                 {
                   blogs.map(item => {
                     return (

@@ -25,7 +25,7 @@ const Main = () => {
     <>
       {loading ? (
         <div className="flex items-center justify-center h-screen">
-          <ScaleLoader color="#136734" size={150} />
+          <ScaleLoader color="#1AA457" size={150} />
         </div>
       ) : (
         <div className="min-h-screen overflow-hidden font-nunito relative">

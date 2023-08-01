@@ -36,7 +36,7 @@ const Features = () => {
               <h1 className='md:text-3xl text-2xl font-bold text-center uppercase text-[#136734]'>Get Up to Date</h1>
             </div>
           <Container>
-              <div className="pt-8 md:pt-14 pb-16 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="py-16 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                   data.map(item => {
                     return (

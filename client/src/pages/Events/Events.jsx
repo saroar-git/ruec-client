@@ -41,7 +41,7 @@ const Events = () => {
             </div>
 
           <Container>
-              <div className='md:pt-8 pb-16 text-center'>
+              <div className='py-16 text-center'>
                 <Tabs>
                   <TabList className="text-green-700 font-semibold mb-8 bg-base-200 rounded">
                     <Tab>Upcoming</Tab>

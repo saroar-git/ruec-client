@@ -52,7 +52,7 @@ const Blogs = () => {
           .then(data => {
             if (data.insertedId) {
               toast.success('Data Submitted!');
-              // form.reset();
+              form.reset();
             }
             setLoading(false);
           });

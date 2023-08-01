@@ -179,7 +179,7 @@ const Dashboard = () => {
                       </td>
                       <td className='text-center'>
                         <button
-                          onClick={() => handleDelete(user)}
+                          onClick={() => handleDelete(user)} disabled={user.role === 'admin'} 
                           className="btn btn-outline text-[#136734] hover:bg-[#136734] normal-case flex flex-col justify-center items-center mt-1"
                         >
                           <FaTrashAlt className='text-red-500 hidden md:block' /> {isDeleting ? 'Wait..' : 'Remove'}

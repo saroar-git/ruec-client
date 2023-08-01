@@ -37,8 +37,7 @@ const About = () => {
                   At Rajshahi University Education Club, we are passionate about education and dedicated to creating a transformable learning experience for students. As the first club at Rajshahi University solely focused on education, we strive to cultivate a vibrant community where students can thrive academically, foster innovation, and engage in meaningful research.
                 </p>
 
-                <div className='grid grid-cols-2 md:grid-cols-4 w-full h-32 my-16 rounded px-6 gap-8'>
-
+                <div className='grid grid-cols-2 md:grid-cols-4 w-full h-32 mt-16 mb-56 md:mb-16 rounded px-6 gap-8'>
                   <div className="p-4 flex flex-col items-center bg-[#D3F4EC] group">
                     <div className="md:text-2xl mb-4 font-extrabold">
                       Active Members</div>
@@ -67,7 +66,7 @@ const About = () => {
 
                 <div data-aos="fade-up" data-aos-easing="ease-out-cubic"
                   data-aos-duration="1000">
-                  <h3 className="mt-10 md:text-2xl text-xl font-bold text-[#59BB4D] text-center" >Our Mission</h3>
+                  <h3 className="mt-24 md:text-2xl text-xl font-bold text-[#59BB4D] text-center" >Our Mission</h3>
                   <p className="md:text-lg font-semibold text-justify md:text-center">Our mission is to provide a platform that fosters a dynamic learning environment, promoting education, innovation, and research among students. We believe that education is not limited to textbooks and classrooms; it is a lifelong journey of exploration, discovery, and personal growth. Through our club, we aim to inspire and empower students to embrace education as a catalyst for positive change in their lives and society.</p>
                 </div>
 

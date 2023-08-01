@@ -214,7 +214,7 @@ const AddEvents = () => {
                               onClick={() => handleComplete(event)} disabled={event.status === 'completed'}
                               className="btn btn-outline text-[#136734] hover:bg-[#136734] normal-case"
                             >
-                              <MdVerified className='text-[#59BB4D] hidden md:block' /> Approve
+                              <MdVerified className='text-[#59BB4D] hidden md:block' /> Completed
                             </button>
 
                             <button

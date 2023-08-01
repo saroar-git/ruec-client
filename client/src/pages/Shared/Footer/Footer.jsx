@@ -19,16 +19,16 @@ const Footer = () => {
 
           <div className='flex items-start gap-2'>
             <FaLocationDot className='text-lg text-[#FF182C] mx-1 md:mx-0' />
-            <Link to='/' target='_blank' className='hover:link'>
+            <p target='_blank' className='hover:link'>
               Rajshahi University, <br /> Rajshahi, Bangladesh.
-            </Link>
+            </p>
           </div>
 
           <div className='flex items-center gap-2'>
             <BiMailSend className='text-lg text-purple-600 mx-1 md:mx-0' />
-            <Link to="mailto:rueducationclub@gmail.com" target="_blank" className='hover:link'>
+            <p target="_blank" className='hover:link'>
               ruec@gmail.com
-            </Link>
+            </p>
           </div>
 
           <div className='flex items-center gap-2'>
@@ -44,30 +44,30 @@ const Footer = () => {
 
           <div className='flex items-start gap-2'>
             <BiLogoFacebookCircle className='text-xl text-[#1877F2] mx-1 md:mx-0' />
-            <Link to='/' target='_blank' className='hover:link'>
+            <p className='hover:link'>
               Facebook Page
-            </Link>
+            </p>
           </div>
 
           <div className='flex items-start gap-2'>
             <BiLogoLinkedin className='text-xl text-[#0A66C2] mx-1 md:mx-0' />
-            <Link to='/' target='_blank' className='hover:link'>
+            <p className='hover:link'>
               LinkedIn Page
-            </Link>
+            </p>
           </div>
 
           <div className='flex items-start gap-2'>
             <IoLogoWhatsapp className='text-lg text-[#25D366] mx-1 md:mx-0' />
-            <Link to="/" target="_blank" className='hover:link'>
+            <p className='hover:link'>
               WhatsApp Now
-            </Link>
+            </p>
           </div>
 
           <div className='flex items-start gap-2'>
             <BiLogoYoutube className='text-xl text-[#FF0000] mx-1 md:mx-0' />
-            <Link to="/" target="_blank" className='hover:link'>
+            <p className='hover:link'>
               Youtube Channel
-            </Link>
+            </p>
           </div>
         </div>
 

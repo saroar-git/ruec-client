@@ -79,10 +79,10 @@ const Events = () => {
 
                             <div className="absolute -bottom-7 w-full">
                               <div className='flex items-center justify-between  rounded-xl'>
-                                <h2 className="flex items-center gap-2 p-1 bg-white text-center rounded-b-xl text-sm font-semibold"> <BsFillAlarmFill className='text-base text-green-600 animate-pulse shadow-xl' />  {item.date}</h2>
+                                <h2 className="flex items-center gap-2 p-1 bg-white text-center rounded-b-xl text-sm font-semibold"> <BsFillAlarmFill className='text-base text-red-600 shadow-xl' />  {item.date}</h2>
 
                                 <a href={item.link} target='_blank' rel='noopener noreferrer' className='flex items-center gap-1 font-semibold p-1 bg-white text-center rounded-b-xl text-sm shadow-xl'>
-                                  <MdAddLink className='text-xl text-green-600' /> Event  Detail
+                                  <MdAddLink className='text-xl text-red-600' /> Event  Detail
                                 </a>
                               </div>
                             </div>

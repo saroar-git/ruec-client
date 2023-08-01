@@ -47,8 +47,8 @@ const Features = () => {
                           <p className='text-left text-sm font-semibold my-2 flex items-center gap-2'><BsBookHalf />{item.subHeading}</p>
 
                           <small className='text-justify'>
-                            {item.text} ...
-                            <Link to={item.link} target='_blank' className='text-green-700 font-bold'>Read More</Link>
+                            {item.text}... 
+                            <Link to={item.link} target='_blank' className='text-green-700 font-bold'> Read More</Link>
                           </small>
                           <div className="card-actions justify-between items-center  mt-6">
                             <small className='flex items-center gap-2'> <FcOvertime className='text-lg' />{item.date}</small>

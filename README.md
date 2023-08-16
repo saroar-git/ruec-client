@@ -33,3 +33,7 @@ Backend:
 - JWT
 
 # Live site: [RUEC](https://ruec-ru.web.app/)
+Admin email: saroar@jahan.com
+Admin password: 123456
+User email: nahid@hasan.com
+User password: 123456

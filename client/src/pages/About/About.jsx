@@ -47,19 +47,19 @@ const About = () => {
                   <div className="p-4 flex flex-col items-center bg-[#FCE8D4] group">
                     <div className="md:text-2xl mb-4 font-extrabold">
                       Recent Events</div>
-                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={40} duration={5} delay={0} />}+</span>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={40} duration={6} delay={0} />}+</span>
                   </div>
 
                   <div className="p-4 flex flex-col items-center bg-[#E3F9E0] group">
                     <div className="md:text-2xl mb-4 font-extrabold">
                       Student Counselling</div>
-                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={2000} duration={7} delay={0} />}+</span>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={2000} duration={6} delay={0} />}+</span>
                   </div>
 
                   <div className="p-4 flex flex-col items-center bg-[#ddecfb] group">
                     <div className="md:text-2xl mb-4 font-extrabold">
                       Yearly Reach</div>
-                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={50000} duration={9} delay={0} />}+</span>
+                    <span className='md:text-4xl font-bold px-4 py-2 rounded-3xl hover:duration-700 duration-700 group-hover:scale-110 bg-slate-200 shadow-lg'>{counter && <CountUp start={0} end={50000} duration={6} delay={0} />}+</span>
                   </div>
 
                 </div>

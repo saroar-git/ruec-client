@@ -74,18 +74,8 @@ const Events = () => {
                     <section className="container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                       {completed.map((item) => (
                         <div key={item._id}>
-                          <div className="relative md:w-96 shadow-xl image-full rounded">
-                            <LazyLoadImage effect="blur" loading='lazy' src={item.image} alt="image" className='rounded-t-xl' />
-
-                            <div className="absolute -bottom-7 w-full">
-                              <div className='flex items-center justify-between  rounded-xl'>
-                                <h2 className="flex items-center gap-2 p-1 bg-white text-center rounded-b-xl text-sm font-semibold"> <BsFillAlarmFill className='text-base text-red-600 shadow-xl' />  {item.date}</h2>
-
-                                <a href={item.link} target='_blank' rel='noopener noreferrer' className='flex items-center gap-1 font-semibold p-1 bg-white text-center rounded-b-xl text-sm shadow-xl'>
-                                  <MdAddLink className='text-xl text-red-600' /> Event  Detail
-                                </a>
-                              </div>
-                            </div>
+                          <div className="md:w-96 shadow-xl image-full rounded">
+                            <LazyLoadImage effect="blur" loading='lazy' src={item.image} alt="image" className='rounded-t-xl' />                            
                           </div>
                         </div>
                       ))}

@@ -55,13 +55,13 @@ const Profile = () => {
                         <h1 className="text-xl lg:text-3xl font-bold text-neutral">
                           {item.name}
                         </h1>
-                        <p className="flex items-center gap-2">{item.role}</p>
+                        <p className="flex items-center text-green-700 font-semibold gap-2">{item.role==='member'? 'Member':''}</p>
                       </div>
 
                       <p className="flex items-center gap-2"><IoMdMail className="text-[#136734]" />{item.email}</p>
                       <p className="flex items-center gap-2"><IoIosCall className="text-[#136734]" /> {item.phone}</p>
 
-                      <div className="flex items-center gap-4 font-semibold my-4"><p className="flex items-center gap-2"><FaSchoolFlag className="text-[#136734]" />  {item.department}</p>
+                      <div className="flex flex-col items-center font-semibold my-4"><p className="flex items-center gap-2"><FaSchoolFlag className="text-[#136734]" />  {item.department}</p>
                         <p className="flex items-center gap-2"><IoIosCalendar className="text-[#136734]" /> {item.session}</p>
                       </div>
                     </div>
